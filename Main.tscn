@@ -1,0 +1,213 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Hero.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Alien.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sfx/background.wav" type="AudioStream" id=4]
+[ext_resource path="res://Starfield1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Starfield2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Starfield3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Starfield4.tscn" type="PackedScene" id=8]
+[ext_resource path="res://fonts/arcade_classic.TTF" type="DynamicFontData" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 27
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 27
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 27
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 63
+extra_spacing_char = 8
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 23
+extra_spacing_char = 3
+font_data = ExtResource( 9 )
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+Hero = ExtResource( 2 )
+Alien = ExtResource( 3 )
+Starfield1 = ExtResource( 5 )
+Starfield2 = ExtResource( 6 )
+Starfield3 = ExtResource( 7 )
+Starfield4 = ExtResource( 8 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 800.0
+margin_bottom = 600.0
+color = Color( 0.0156863, 0.0196078, 0.00784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 400, 500 )
+
+[node name="Background Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -3.0
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="WaveLabel" type="Label" parent="CanvasLayer"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 72.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 1 )
+text = "Wave"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WaveValueLabel" type="Label" parent="CanvasLayer"]
+margin_left = 20.0
+margin_top = 35.0
+margin_right = 72.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -37.5
+margin_top = 10.0
+margin_right = 37.5
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 2 )
+text = "Score"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreValueLabel" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -32.5
+margin_top = 35.0
+margin_right = 32.5
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HiscoreLabel" type="Label" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -110.566
+margin_top = 10.0
+margin_right = -19.5664
+margin_bottom = 34.0
+grow_horizontal = 0
+custom_fonts/font = SubResource( 3 )
+text = "HiScore"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HiscoreValueLabel" type="Label" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -110.566
+margin_top = 35.0
+margin_right = -19.5664
+margin_bottom = 34.0
+grow_horizontal = 0
+custom_fonts/font = SubResource( 3 )
+text = "0"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer"]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -36.0
+margin_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "GAME  OVER"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayAgainLabel" type="Label" parent="CanvasLayer"]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 49.5663
+margin_bottom = 73.5663
+custom_fonts/font = SubResource( 5 )
+text = "Press Enter to play again"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WaveTransitionLabel" type="Label" parent="CanvasLayer"]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -32.5
+margin_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "WAVE 1"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WaveIntroTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[connection signal="timeout" from="WaveIntroTimer" to="." method="_on_WaveIntroTimer_timeout"]

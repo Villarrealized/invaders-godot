@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hero_laser.wav-f183a44392ae735c22c9f2550dba6bf7.sample"
+
+[deps]
+
+source_file="res://sfx/hero_laser.wav"
+dest_files=[ "res://.import/hero_laser.wav-f183a44392ae735c22c9f2550dba6bf7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

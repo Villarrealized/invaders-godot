@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/alien_laser.wav-3ae5ca867f114d37bf484dd9b6d6f81c.sample"
+
+[deps]
+
+source_file="res://sfx/alien_laser.wav"
+dest_files=[ "res://.import/alien_laser.wav-3ae5ca867f114d37bf484dd9b6d6f81c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

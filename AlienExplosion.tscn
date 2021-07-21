@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://sfx/alien_explosion.wav" type="AudioStream" id=1]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.212871, 0.559406, 0.787129, 0.935644 )
+colors = PoolColorArray( 0.992157, 0.870588, 0.85098, 1, 0.596078, 0.933333, 0.933333, 1, 0.415686, 0.615686, 0.596078, 1, 0.980392, 0.462745, 0.333333, 0.588235, 0.196078, 0.0941176, 0.188235, 0.396078 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0.00212766, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.612635 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 20.0
+initial_velocity_random = 0.85
+angular_velocity = 20.0
+angular_velocity_random = 0.3
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 10.0
+linear_accel_random = 0.39
+damping = 4.0
+damping_random = 0.1
+angle = 30.0
+angle_random = 0.8
+scale = 3.0
+scale_random = 0.4
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+hue_variation = 0.05
+hue_variation_random = 0.5
+
+[node name="AlienExplosion" type="Particles2D"]
+position = Vector2( 375.935, 312.428 )
+amount = 150
+lifetime = 2.0
+speed_scale = 2.5
+explosiveness = 1.0
+process_material = SubResource( 5 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+autoplay = true

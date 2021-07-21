@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://sfx/hero_explosion.wav" type="AudioStream" id=1]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.257426, 0.861386, 1 )
+colors = PoolColorArray( 0.894118, 0.870588, 0.8, 1, 0.843137, 0.694118, 0.286275, 1, 0.752941, 0.490196, 0, 0.294118, 0.25098, 0.184314, 0.0156863, 0.0980392 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0.00212766, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.612635 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 40.0
+initial_velocity_random = 0.85
+angular_velocity = 20.0
+angular_velocity_random = 0.3
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 12.0
+linear_accel_random = 0.39
+damping = 4.0
+damping_random = 0.1
+angle = 30.0
+angle_random = 0.8
+scale = 4.0
+scale_random = 0.4
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[node name="HeroExplosion" type="Particles2D"]
+position = Vector2( 375.935, 312.428 )
+amount = 300
+lifetime = 6.0
+speed_scale = 2.5
+explosiveness = 0.96
+process_material = SubResource( 5 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
