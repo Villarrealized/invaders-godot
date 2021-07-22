@@ -40,6 +40,7 @@ Starfield1 = ExtResource( 5 )
 Starfield2 = ExtResource( 6 )
 Starfield3 = ExtResource( 7 )
 Starfield4 = ExtResource( 8 )
+wave = 10
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 800.0
@@ -75,9 +76,9 @@ __meta__ = {
 
 [node name="WaveValueLabel" type="Label" parent="CanvasLayer"]
 margin_left = 20.0
-margin_top = 35.0
+margin_top = 34.5291
 margin_right = 72.0
-margin_bottom = 34.0
+margin_bottom = 62.5291
 custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1

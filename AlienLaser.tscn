@@ -10,10 +10,10 @@ region = Rect2( 14, 0, 14, 22 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ SubResource( 1 ) ],
+"frames": [ SubResource( 1 ), null ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 60.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=3]
@@ -31,6 +31,8 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
+frame = 1
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )

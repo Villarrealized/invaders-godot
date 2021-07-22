@@ -29,6 +29,8 @@ var num_columns = 5
 var game_over = false
 
 var wave_title_fade_in = true
+var play_again_fade_in = true
+var should_create_aliens = false
 
 func _ready():
 	Engine.set_target_fps(Settings.fps)
@@ -78,11 +80,11 @@ func _process(delta):
 		if !game_over:
 			get_tree().call_group('aliens', 'move_down', delta)
 
-
 	# Start the countdown for the next wave and speed up stars
 	if (aliens.size() == 0
 		&& alien_weapons.size() == 0
 		&& hero_weapons.size() == 0
+		&& should_create_aliens == false
 		&& is_instance_valid(hero)):
 
 		# Start wave countdown timer
@@ -97,20 +99,23 @@ func _process(delta):
 		var speed_decrease = 0.05
 
 		if time_left >= duration * 0.3:
+			hero.accelerate()
 			starfield_1.increase_speed(speed_increase)
 			starfield_2.increase_speed(speed_increase)
 			starfield_3.increase_speed(speed_increase)
 			starfield_4.increase_speed(speed_increase)
 		elif time_left > 0:
+			hero.decelerate()
 			starfield_1.decrease_speed(speed_decrease)
 			starfield_2.decrease_speed(speed_decrease)
 			starfield_3.decrease_speed(speed_decrease)
 			starfield_4.decrease_speed(speed_decrease)
-		else:
-			starfield_1.reset_speed()
-			starfield_2.reset_speed()
-			starfield_3.reset_speed()
-			starfield_4.reset_speed()
+
+	if (should_create_aliens
+		&& hero.position.y >= $StartPosition.position.y - 3
+		&& hero.position.y <= $StartPosition.position.y + 3):
+			create_aliens()
+			should_create_aliens = false
 
 	# Game Over
 	if !is_instance_valid(hero):
@@ -133,7 +138,7 @@ func _process(delta):
 			spawn_hero()
 			begin_wave_transition()
 
-	# Pelse the wave title during transition
+	# Pulse the wave title during transition
 	var alpha = $CanvasLayer/WaveTransitionLabel.modulate.a
 
 	if $WaveIntroTimer.time_left > 0 || alpha > 0:
@@ -163,6 +168,20 @@ func _process(delta):
 	if game_over:
 		$CanvasLayer/GameOverLabel.visible = true
 		$CanvasLayer/PlayAgainLabel.visible = true
+		# Pulse the wave title during transition
+		var play_again_alpha = $CanvasLayer/PlayAgainLabel.modulate.a
+
+		var amount = delta * 0.7
+
+		if play_again_alpha >= 1:
+			play_again_fade_in = false
+		elif play_again_alpha <= 0:
+			play_again_fade_in = true
+
+		if play_again_fade_in:
+			$CanvasLayer/PlayAgainLabel.modulate.a += amount
+		else:
+			$CanvasLayer/PlayAgainLabel.modulate.a -= amount
 	else:
 		$CanvasLayer/GameOverLabel.visible = false
 		$CanvasLayer/PlayAgainLabel.visible = false
@@ -193,7 +212,7 @@ func start_next_wave():
 	AlienVariables.speed = AlienVariables.initial_speed + (wave_multiplier * 0.1 * Settings.fps)
 	AlienVariables.point_value = AlienVariables.point_value + (wave_multiplier * 10)
 
-	create_aliens()
+	should_create_aliens = true
 
 func create_aliens():
 	var column = 0
@@ -209,7 +228,8 @@ func create_aliens():
 
 	num_aliens = clamp(min_aliens + (wave_multiplier * 3), min_aliens, max_aliens)
 
-	if num_aliens / num_columns > 7:
+
+	if float(num_aliens) / float(num_columns) > 7:
 		num_columns = 10
 
 	for index in range(0, num_aliens):
@@ -238,5 +258,10 @@ func begin_wave_transition():
 
 # start the next wave when aliens and weapons are gone
 func _on_WaveIntroTimer_timeout():
+	hero.reset_acceleration()
+	starfield_1.reset_speed()
+	starfield_2.reset_speed()
+	starfield_3.reset_speed()
+	starfield_4.reset_speed()
 	start_next_wave()
 
