@@ -53,6 +53,9 @@ func _process(delta):
 	if Input.is_action_pressed("quit"):
 		get_tree().quit()
 
+	if Input.is_action_just_released("toggle_fullscreen"):
+			OS.window_fullscreen = !OS.window_fullscreen
+
 	aliens = get_tree().get_nodes_in_group('aliens')
 	alien_weapons = get_tree().get_nodes_in_group('alien_weapons')
 	hero_weapons = get_tree().get_nodes_in_group('hero_weapons')
