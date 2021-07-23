@@ -13,11 +13,11 @@ initial_velocity = 12.0
 initial_velocity_random = 0.2
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-color = Color( 0.14902, 0.152941, 0.184314, 1 )
+color = Color( 0.14902, 0.152941, 0.184314, 0.596078 )
 
 [node name="Starfield" type="Particles2D"]
 position = Vector2( 400, -2 )
-amount = 3500
+amount = 3000
 lifetime = 70.0
 preprocess = 70.0
 process_material = SubResource( 1 )
