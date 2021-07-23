@@ -13,6 +13,5 @@ var speed = initial_speed
 
 var initial_laser_speed = Settings.fps * 2
 var laser_speed = initial_laser_speed
-var laser_x_speed = Settings.fps * 2
 
 var point_value = 40

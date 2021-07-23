@@ -13,7 +13,7 @@ animations = [ {
 "frames": [ SubResource( 1 ), null ],
 "loop": true,
 "name": "default",
-"speed": 60.0
+"speed": 45.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=3]

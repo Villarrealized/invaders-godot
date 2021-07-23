@@ -13,7 +13,7 @@ animations = [ {
 "frames": [ SubResource( 1 ), null ],
 "loop": true,
 "name": "default",
-"speed": 60.0
+"speed": 45.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=3]
@@ -31,10 +31,10 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 3 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
